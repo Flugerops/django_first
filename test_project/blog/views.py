@@ -35,3 +35,8 @@ def create_post(request):
         return redirect("blog:home_page")
 
     return render(request, "create_post.html")
+
+
+def get_by_tags(request, tag_id):
+    posts = Post.objects.filter(tags=tag_id).all()
+    return render(request, "index.html", {"posts": posts})
